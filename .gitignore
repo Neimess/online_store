@@ -1,0 +1,6 @@
+env
+requirements.txt
+myshop/db.sqlite3
+myshop/myshop/__pycache__
+myshop/shop/__pycache__
+myshop/shop/migrations/__pycache__
