@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200..900&display=swap);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #007c4d, #7559b6);
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .user-details .form-group {
+    margin: 20px 0 12px 0;
+    width: calc(100% / 2 - 20px);
+}
+form .user-details .form-group .details {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.user-details .form-group input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+.user-details .form-group input:focus {
+    border-color: #9b59b6;
+}
+
+form .button {
+    height: 45px;
+    margin: 45px 0;
+}
+
+form .button input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+    </style>
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class="title">Регистрация</div>
+            <div class="user-details">
+                <div class="form-group">
+                    <span class="details">Имя пользователя</span>
+                    {{ user_form.username }}
+                </div>
+                <div class="form-group">
+                    <span class="details">Email</span>
+                    {{ user_form.email }}
+                </div>
+                <div class="form-group">
+                    <span class="details">Фамилия</span>
+                    {{ user_form.last_name }}
+                </div>
+                <div class="form-group">
+                    <span class="details">Имя</span>
+                    {{ user_form.first_name }}
+                </div>
+                <div class="form-group">
+                    <span class="details">Пароль</span>
+                    {{ user_form.password1 }}
+                </div>
+                <div class="form-group">
+                    <span class="details">Повторите пароль</span>
+                    {{ user_form.password2 }}
+                </div>
+                <div class="form-group">
+                    <span class="details">Дата рождения</span>
+                    {{ profile_form.birth_date }} 
+                </div>
+                <div class="form-group">
+                    <span class="details">Номер телефона</span>
+                    {{ profile_form.phone_number }} 
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="Зарегистрироваться">
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+
+
+//Query All input fields
+var form_fields = document.getElementsByTagName('input')
+form_fields[1].placeholder='Имя пользователя..';
+form_fields[2].placeholder='Email..';
+form_fields[3].placeholder="Введите фамилию..";
+form_fields[4].placeholder="Введите имя..";
+form_fields[5].placeholder='Введите пароль..';
+form_fields[6].placeholder='Повторите пароль..';
+form_fields[7].type="date";
+form_fields[7].min="1900-01-01";
+form_fields[8].placeholder='Введите номер..';
+form_fields[8].type='tel';
+
+for (var field in form_fields){	
+form_fields[field].className += ' form-control'
+}
+</script>
+
+</html>
+
+</form>
+

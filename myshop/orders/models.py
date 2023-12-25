@@ -33,10 +33,10 @@ class OrderItem(models.Model):
                               related_name='items',
                               on_delete=models.CASCADE,
                               null=False)
-    product = models.ForeignKey(Product,
-                                related_name='order_items',
-                                on_delete=models.CASCADE,
-                                null=False)
+    products = models.ForeignKey(Product,
+                                 related_name='order_items',
+                                 on_delete=models.CASCADE,
+                                 null=False)
     price = models.DecimalField(max_digits=10,
                                 decimal_places=2,
                                 validators=[

@@ -47,7 +47,7 @@ class Cart:
         self.save()
 
     def get_total_price(self):
-        return sum(Decimal(item['price'] * item['quantity'])
+        return sum(Decimal(item['price']) * Decimal(item['quantity'])
                    for item in self.cart.values())
 
     def __iter__(self):
